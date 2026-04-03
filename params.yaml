@@ -1,0 +1,21 @@
+
+data:
+  csv_file_path: ./archive/imdb-dataset.csv
+  test_set_ratio: 0.3
+  train_csv_save_path: ./archive/train.csv
+  test_csv_save_path: ./archive/test.csv
+
+features:
+  vectorizer: tfidf-vectorizer
+  train_feature_save_path: ./archive/train.joblib
+  test_feature_save_path: ./archive/test.joblib
+
+train:
+  penalty: l2
+  C: 1.0
+  solver: lbfgs
+  model_save_path: ./archive/model.joblib
+
+evaluation:
+  metric: f1_score
+  result_save_path: ./archive/results.yaml
