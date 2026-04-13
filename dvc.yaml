@@ -39,5 +39,5 @@ stages:
       - ./archive/model.joblib
     params:
       - evaluation
-    outs:
+    metrics:
       - ./archive/results.yaml
