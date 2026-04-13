@@ -15,29 +15,29 @@ stages:
       params.yaml:
         data:
           csv_file_path: ./archive/imdb-dataset.csv
-          test_set_ratio: 0.2
+          test_set_ratio: 0.3
           train_csv_save_path: ./archive/train.csv
           test_csv_save_path: ./archive/test.csv
     outs:
     - path: ./archive/test.csv
       hash: md5
-      md5: 9c481891b267fc858b7623047b47e080
-      size: 13163613
+      md5: 410275d9e41169d0f2ab41a750af7d27
+      size: 19781790
     - path: ./archive/train.csv
       hash: md5
-      md5: 3e69fcb0710e7ff5a3f094901f5c2803
-      size: 53148727
+      md5: 64b2a3cf4b8f44f053cec94d19bd798a
+      size: 46530550
   make_features:
     cmd: python ./make_features.py
     deps:
     - path: ./archive/test.csv
       hash: md5
-      md5: 9c481891b267fc858b7623047b47e080
-      size: 13163613
+      md5: 410275d9e41169d0f2ab41a750af7d27
+      size: 19781790
     - path: ./archive/train.csv
       hash: md5
-      md5: 3e69fcb0710e7ff5a3f094901f5c2803
-      size: 53148727
+      md5: 64b2a3cf4b8f44f053cec94d19bd798a
+      size: 46530550
     - path: ./make_features.py
       hash: md5
       md5: dfaa09f82a3dba20039eaf2b56b9aa00
@@ -51,23 +51,23 @@ stages:
     outs:
     - path: ./archive/test.joblib
       hash: md5
-      md5: 5f09f4772fba84791d83e1178483fd68
-      size: 10499971
+      md5: 7cbeae63d7b2f96ae422d5265a3ad4ba
+      size: 15752859
     - path: ./archive/train.joblib
       hash: md5
-      md5: d3ff1f2e6f741f2a1ddb55e988a02049
-      size: 42801283
+      md5: ec5c399b90fae7f05ff8bb65a4f23900
+      size: 37478915
   train:
     cmd: python ./train.py
     deps:
     - path: ./archive/train.csv
       hash: md5
-      md5: 3e69fcb0710e7ff5a3f094901f5c2803
-      size: 53148727
+      md5: 64b2a3cf4b8f44f053cec94d19bd798a
+      size: 46530550
     - path: ./archive/train.joblib
       hash: md5
-      md5: d3ff1f2e6f741f2a1ddb55e988a02049
-      size: 42801283
+      md5: ec5c399b90fae7f05ff8bb65a4f23900
+      size: 37478915
     - path: ./train.py
       hash: md5
       md5: ceee031bac5c2659164c11114bd53339
@@ -82,23 +82,23 @@ stages:
     outs:
     - path: ./archive/model.joblib
       hash: md5
-      md5: e0db759b4c8de53bbdcffd3bd9f69045
-      size: 742479
+      md5: 82adee5c38f4dcc37d6d74e95699bd19
+      size: 703423
   evaluate:
     cmd: python ./evaluate.py
     deps:
     - path: ./archive/model.joblib
       hash: md5
-      md5: e0db759b4c8de53bbdcffd3bd9f69045
-      size: 742479
+      md5: 82adee5c38f4dcc37d6d74e95699bd19
+      size: 703423
     - path: ./archive/test.csv
       hash: md5
-      md5: 9c481891b267fc858b7623047b47e080
-      size: 13163613
+      md5: 410275d9e41169d0f2ab41a750af7d27
+      size: 19781790
     - path: ./archive/test.joblib
       hash: md5
-      md5: 5f09f4772fba84791d83e1178483fd68
-      size: 10499971
+      md5: 7cbeae63d7b2f96ae422d5265a3ad4ba
+      size: 15752859
     - path: ./evaluate.py
       hash: md5
       md5: 76147925b8d3592a32b25515ed3d8543
@@ -111,5 +111,5 @@ stages:
     outs:
     - path: ./archive/results.yaml
       hash: md5
-      md5: 6d40ea4acb34dc12506df920961dccba
+      md5: 4ba82a25286cc159caba0e656a350b0e
       size: 29
